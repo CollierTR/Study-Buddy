@@ -17,6 +17,10 @@ const initialAppState = {
         points: []
       },
       {
+        title: "Questions",
+        points: []
+      },
+      {
         title: "Objections",
         points: []
       },
