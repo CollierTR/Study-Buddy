@@ -5,8 +5,12 @@ import NotePanel from "./componets/NotePanel"
 import { Route, Routes } from "react-router"
 import File from "./componets/File"
 
+const today = new Date()
+const date = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
+console.log(date)
+
 const initialAppState = {
-    mainTitle: "Awesome Title",
+    mainTitle: date.toString(),
     bulletLists: [
       {
         title: "Main Points",
@@ -58,6 +62,12 @@ function reducer(state, action) {
 
     case 'newFile':
       return initialAppState
+
+    case 'updateTitle':
+      return {
+        ...state,
+        mainTitle: action.payload.title
+      }
 
     default:
       return state

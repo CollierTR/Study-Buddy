@@ -1,4 +1,5 @@
 import BulletList from "./BulletList"
+import TitleInput from "./TitleInput";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,7 +24,7 @@ const NotePanel = ({ appState, dispatch }) => {
 
   return (
     <div className="text-lg flex flex-col justify-center place-items-center gap-8 p-6">
-        <h1 className="font-bold text-3xl">{appState.mainTitle}</h1>
+        <TitleInput appState={appState} dispatch={dispatch} />
         {
             appState.bulletLists.map((bulletList) => (
                 <BulletList key={bulletList.title} bulletList={bulletList} dispatch={dispatch} />

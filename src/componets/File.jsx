@@ -1,7 +1,7 @@
 const File = ({ appState }) => {
   return (
     <div className="flex flex-col justify-center place-items-center p-6 gap-8 text-xl">
-      <h1 className="text-3xl font-bold">{appState.mainTitle}</h1>
+      <h1 className="text-3xl py-2 font-bold">{appState.mainTitle}</h1>
 
       {appState.bulletLists.map((list) => (
         <div key={list.title} className={`flex flex-col gap-2 place-items-center ${list.points[0] ? '' : 'hidden'}`}>
