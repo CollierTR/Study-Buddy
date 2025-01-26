@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 const TitleInput = ({ appState, dispatch }) => {
+
   const [editMode, toggleEditMode] = useState(false);
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+  // Focus the input element when the component mounts
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
+  }, [editMode]);
+
 
   return (
     <div className="text-center">
@@ -28,6 +39,7 @@ const TitleInput = ({ appState, dispatch }) => {
             }}
           >
             <input
+            ref={inputRef}
             placeholder="Rename Title..."
               type="text"
               name="title"
