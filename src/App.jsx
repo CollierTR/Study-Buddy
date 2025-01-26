@@ -7,7 +7,6 @@ import File from "./componets/File"
 
 const today = new Date()
 const date = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
-console.log(date)
 
 const initialAppState = {
     mainTitle: date.toString(),
@@ -33,6 +32,8 @@ const initialAppState = {
         points: []
       },
     ],
+    creationDate: date.toString(),
+    lastUpdated: date.toString(),
     appColorTheme: 'original',
   }
 
@@ -44,20 +45,21 @@ function reducer(state, action) {
   switch (action.type) {
 
     case 'addPoint':
-      console.log('action recieved...')
       return {
         ...state,
         bulletLists:state.bulletLists.map((list) => {
           return list.title === action.payload.title
             ? {...list, points: [...list.points, action.payload.newPoint]}
             : list
-        })
+        }),
+        lastUpdated: date.toString()
       };
 
     case 'addCategory':
       return {
         ...state,
-        bulletLists: [...state.bulletLists, {title: action.payload.newCategory, points: []}]
+        bulletLists: [...state.bulletLists, {title: action.payload.newCategory, points: []}],
+        lastUpdated: date.toString()
       };
 
     case 'newFile':
@@ -66,7 +68,8 @@ function reducer(state, action) {
     case 'updateTitle':
       return {
         ...state,
-        mainTitle: action.payload.title
+        mainTitle: action.payload.title,
+        lastUpdated: date.toString()
       }
 
     default:
@@ -98,7 +101,7 @@ useEffect(() => {
           </Routes>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer appState={appState} />
     </main>
   )
 }

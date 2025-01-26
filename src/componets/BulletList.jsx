@@ -45,7 +45,7 @@ const BulletList = ({ bulletList, dispatch }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
-                  if (e.target.title.value) {
+                  if (e.target.newPoint.value) {
                   dispatch({type: 'addPoint', payload: {title: bulletList.title, newPoint: e.target.newPoint.value}})
                   }
                   setPopup(!popup);

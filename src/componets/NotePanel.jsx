@@ -54,7 +54,7 @@ const NotePanel = ({ appState, dispatch }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
-                  if (e.target.title.value) {
+                  if (e.target.newCat.value) {
                   dispatch({type: 'addCategory', payload: {newCategory: e.target.newCat.value}})
                   }
                   setPopup(!popup);
