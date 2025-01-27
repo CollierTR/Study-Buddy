@@ -42,7 +42,11 @@ const Header = ({ appState, dispatch }) => {
       {nav && (
         <div className="bg-gray-300 w-full h-screen absolute top-0 left-0 z-10">
           <div className="w-full flex flex-row-reverse justify-between place-items-center py-2 px-3 text-2xl bg-gray-500">
-            <FontAwesomeIcon icon={faClose} onClick={() => toggleNav(!nav)} />
+            <FontAwesomeIcon
+              className="text-3xl"
+              icon={faClose}
+              onClick={() => toggleNav(!nav)}
+            />
             <p>Settings</p>
           </div>
           <div className="flex flex-col place-items-center justify-center mx-auto gap-6 my-6">
@@ -71,12 +75,12 @@ const Header = ({ appState, dispatch }) => {
                 className="bg-red-600 border-2 font-semibold border-black rounded-xl px-4 py-1"
                 onClick={() => {
                   toggleDeleteConfirmation(!deleteConfirmation);
-                  dispatch({ type: "newFile" })
+                  dispatch({ type: "newFile" });
                 }}
               >
                 Yes
               </button>
-              <button 
+              <button
                 className="border-2 font-semibold border-black rounded-xl px-4 py-1"
                 onClick={() => {
                   toggleDeleteConfirmation(!deleteConfirmation);

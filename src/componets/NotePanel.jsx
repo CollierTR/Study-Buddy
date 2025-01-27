@@ -33,7 +33,6 @@ const NotePanel = ({ appState, dispatch }) => {
         <button onClick={() => setPopup(!popup)} className="border-2 border-black  px-4 py-2 rounded-full font-bold text-xl">Add Category</button>
 
 
-
       {popup &&
         createPortal(
           <div onClick={(e) => setPopup(!popup)} className="absolute bg-[rgba(0,0,0,0.5)] w-full h-screen grid place-content-center text-2xl ">
