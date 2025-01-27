@@ -36,20 +36,19 @@ const NotePanel = ({ appState, dispatch }) => {
 
       {popup &&
         createPortal(
-          <div onClick={(e) => setPopup(!popup)} className="absolute w-full h-screen grid place-content-center text-2xl ">
+          <div onClick={(e) => setPopup(!popup)} className="absolute bg-[rgba(0,0,0,0.5)] w-full h-screen grid place-content-center text-2xl ">
               
             <div
               className="bg-white p-8 flex flex-col justify-center gap-4 rounded-2xl border-2 border-black"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-end place-items-center text-3xl text-red-600">
+              <div className="flex justify-between place-items-center text-2xl ">
+                <p>Add a New Category</p>
                 <FontAwesomeIcon
                   onClick={() => setPopup(!popup)}
                   icon={faClose}
+                  className="text-red-600 text-3xl"
                 />
-              </div>
-              <div className="flex justify-start place-items-center">
-                <p>Add a New Category</p>
               </div>
               <form
                 onSubmit={(e) => {

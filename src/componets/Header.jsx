@@ -2,6 +2,7 @@ import { faFile, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import {
   faBars,
   faClose,
+  faEllipsis,
   faSliders,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,7 @@ import { Link, useLocation } from "react-router";
 const Header = ({ appState, dispatch }) => {
   const location = useLocation();
   const [nav, toggleNav] = useState(false);
+  const [deleteConfirmation, toggleDeleteConfirmation] = useState(false);
 
   return (
     <div className="w-full flex justify-between place-items-center py-2 px-3 text-2xl bg-gray-500">
@@ -19,7 +21,7 @@ const Header = ({ appState, dispatch }) => {
         <FontAwesomeIcon icon={faBars} />
         <FontAwesomeIcon
           icon={faTrash}
-          onClick={() => dispatch({ type: "newFile" })}
+          onClick={() => toggleDeleteConfirmation(!deleteConfirmation)}
         />
       </div>
       <p className="text-xl">Meta List</p>
@@ -47,6 +49,42 @@ const Header = ({ appState, dispatch }) => {
             <p>Note Library</p>
             <p>Set Default Categories</p>
             <p>Change Theme</p>
+          </div>
+        </div>
+      )}
+
+      {deleteConfirmation && (
+        <div
+          className="flex justify-center place-items-center absolute w-full bg-[rgba(0,0,0,0.5)] trans h-screen top-0 left-0 z-10"
+          onClick={() => toggleDeleteConfirmation(!deleteConfirmation)}
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleDeleteConfirmation(!deleteConfirmation);
+            }}
+            className="bg-white w-3/4 text-center p-8 flex flex-col shadow-xl justify-center gap-4 rounded-2xl border-2 border-black"
+          >
+            <p className="text-3xl">Delete File?</p>
+            <div className="flex justify-center place-items-center gap-4">
+              <button
+                className="bg-red-600 border-2 font-semibold border-black rounded-xl px-4 py-1"
+                onClick={() => {
+                  toggleDeleteConfirmation(!deleteConfirmation);
+                  dispatch({ type: "newFile" })
+                }}
+              >
+                Yes
+              </button>
+              <button 
+                className="border-2 font-semibold border-black rounded-xl px-4 py-1"
+                onClick={() => {
+                  toggleDeleteConfirmation(!deleteConfirmation);
+                }}
+              >
+                No
+              </button>
+            </div>
           </div>
         </div>
       )}

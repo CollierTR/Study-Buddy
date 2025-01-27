@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const BulletList = ({ bulletList, dispatch }) => {
 
@@ -28,19 +28,18 @@ const BulletList = ({ bulletList, dispatch }) => {
 
       {popup &&
         createPortal(
-          <div className="absolute w-full h-screen grid place-content-center text-2xl">
+          <div className="absolute w-full h-screen bg-[rgba(0,0,0,0.5)] grid place-content-center text-2xl">
             <div
               onClick={(e) => e.stopPropagation()}
               className="bg-white p-8 flex flex-col justify-center gap-4 rounded-2xl border-2 border-black"
             >
-              <div className="flex justify-end place-items-center text-3xl text-red-600">
+              <div className="flex justify-between place-items-center text-3xl ">
+                <p>{bulletList.title}:</p>
                 <FontAwesomeIcon
                   onClick={() => setPopup(!popup)}
                   icon={faClose}
+                  className="text-red-600"
                 />
-              </div>
-              <div className="flex justify-start place-items-center">
-                <p>{bulletList.title}:</p>
               </div>
               <form
                 onSubmit={(e) => {
@@ -59,6 +58,10 @@ const BulletList = ({ bulletList, dispatch }) => {
                   className="p-3 border-2 border-black rounded-xl"
                 />
               </form>
+              <div className="flex gap-6">
+                <FontAwesomeIcon icon={faTrash}/>
+                <FontAwesomeIcon icon={faPenToSquare}/>
+              </div>
             </div>
           </div>,
           document.getElementById("main")
