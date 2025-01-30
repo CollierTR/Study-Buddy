@@ -28,9 +28,9 @@ const bulletListNotEmpty = appState.bulletLists.every(list => list.points.length
             list.points[0] ? "" : "hidden"
           }`}
         >
-          <p className="font-semibold text-2xl">{list.title}:</p>
+          <p className="font-semibold text-2xl text-center text-pretty">{list.title}:</p>
 
-          <ul className="list-disc text-center list-inside px-2 flex flex-col gap-1">
+          <ul className="list-disc text-center text-pretty list-inside px-2 flex flex-col gap-1">
             {list.points.map((point) => (
               <li key={point}>{point}</li>
             ))}
@@ -38,7 +38,7 @@ const bulletListNotEmpty = appState.bulletLists.every(list => list.points.length
         </div>
       ))}
 
-        <FontAwesomeIcon icon={faCopy} className="absolute top-4 right-2 text-2xl" onClick={() => navigator.clipboard.writeText(copyContent)} />
+        <FontAwesomeIcon icon={faCopy} className="absolute top-8  right-6 text-2xl" onClick={() => navigator.clipboard.writeText(copyContent)} />
 
     </div>
   );
