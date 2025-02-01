@@ -8,7 +8,10 @@ function formatStateForCopy(state) {
   state.bulletLists.forEach(list => {
     if (list.points && list.points.length > 0) {
       result += `${list.title}:\n`;
-      result += `• ${list.points}\n` + "\n";
+      list.points.forEach((point) => {
+        result += `• ${point}\n`;
+      })
+      result += '\n'
     } else {
       result += "\n";
     }
