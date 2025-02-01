@@ -72,6 +72,25 @@ function reducer(state, action) {
         lastUpdated: date.toString()
       }
 
+    case 'deleteCategory':
+      return {
+        ...state,
+        bulletLists: state.bulletLists.filter(list => list !== action.payload.bulletList),
+        lastUpdated: date.toString()
+      }
+
+    case 'renameCategory':
+      console.log('new Title:' +action.payload.newTitle)
+      return {
+        ...state,
+        bulletLists: state.bulletLists.map(list =>
+          list.title === action.payload.oldTitle
+          ? {...list, title: action.payload.newTitle}
+          : list
+        ),
+        lastUpdated: date.toString()
+      }
+
     default:
       return state
 

@@ -2,12 +2,24 @@ import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+function formatStateForCopy(state) {
+  let result = `${state.mainTitle}\n\n`;
+
+  state.bulletLists.forEach(list => {
+    if (list.points && list.points.length > 0) {
+      result += `${list.title}:\n`;
+      result += `• ${list.points}\n` + "\n";
+    } else {
+      result += "\n";
+    }
+  });
+  return result.trim();
+}
+
 const File = ({ appState }) => {
 
-    const copyContent = `
-    ${appState.mainTitle}
-    ${appState.bulletLists.map((list) => list.title )}
-    `
+    const copyContent = formatStateForCopy(appState)
+
     console.log(copyContent)
 
 const bulletListNotEmpty = appState.bulletLists.every(list => list.points.length === 0);
