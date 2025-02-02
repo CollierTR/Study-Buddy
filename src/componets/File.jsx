@@ -53,7 +53,9 @@ const bulletListNotEmpty = appState.bulletLists.every(list => list.points.length
         </div>
       ))}
 
-        <FontAwesomeIcon icon={faCopy} className="absolute top-8  right-6 text-2xl" onClick={() => navigator.clipboard.writeText(copyContent)} />
+        {
+        !bulletListNotEmpty && <FontAwesomeIcon icon={faCopy} className="absolute top-8  right-6 text-2xl" onClick={() => navigator.clipboard.writeText(copyContent)} />
+        }
 
     </div>
   );
