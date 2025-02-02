@@ -10,12 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Header = ({ appState, dispatch }) => {
   const location = useLocation();
   const [nav, toggleNav] = useState(false);
   const [deleteConfirmation, toggleDeleteConfirmation] = useState(false);
+  const navigate = useNavigate
 
   return (
     <div className="w-full flex justify-between place-items-center py-2 px-3 text-2xl bg-gray-500">
@@ -49,14 +50,11 @@ const Header = ({ appState, dispatch }) => {
               icon={faClose}
               onClick={() => toggleNav(!nav)}
             />
-            <FontAwesomeIcon icon={faGear} />
+            <Link to={'/settings'}>
+              <FontAwesomeIcon icon={faGear} onClick={() =>  navigate('/settings')}/>
+            </Link>
           </div>
           <div className="flex flex-col place-items-center justify-center mx-auto gap-6 my-6">
-            <p>Settings: (will be on the settings page)</p>
-            <p>Set Default Categories</p>
-            <p>Change Theme</p>
-            <br />
-            <br />
             <button className="border-2">new note</button>
             <p>
               <br />

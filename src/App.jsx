@@ -4,6 +4,7 @@ import { useEffect, useReducer } from "react"
 import NotePanel from "./componets/NotePanel"
 import { Route, Routes } from "react-router"
 import File from "./componets/File"
+import Settings from "./componets/Settings"
 
 const today = new Date()
 const date = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`
@@ -117,6 +118,8 @@ useEffect(() => {
           <Routes>
             <Route path="/" element={<NotePanel appState={appState} dispatch={dispatch}/>}/>
             <Route path="/seeNotes" element={<File appState={appState} />}/>
+            <Route path="/settings" element={<Settings appState={appState} />}/>
+            <Route path="*" element={<NotePanel appState={appState} dispatch={dispatch}/>}/>
           </Routes>
         </div>
       </div>
