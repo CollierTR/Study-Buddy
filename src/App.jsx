@@ -13,11 +13,7 @@ const initialAppState = {
     mainTitle: date.toString(),
     bulletLists: [
       {
-        title: "Main Points",
-        points: []
-      },
-      {
-        title: "Sub Points",
+        title: "General",
         points: []
       },
       {

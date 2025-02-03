@@ -3,7 +3,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function formatStateForCopy(state) {
-  let result = `${state.mainTitle}\n\n`;
+  let result = `${state.mainTitle}\n`;
 
   state.bulletLists.forEach(list => {
     if (list.points && list.points.length > 0) {
